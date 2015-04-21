@@ -10,6 +10,10 @@ import com.jfinal.core.JFinal;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.tx.TxByRegex;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
+import com.sincsmart.uutong.controllers.AssetController;
+import com.sincsmart.uutong.controllers.NewsController;
+import com.sincsmart.uutong.controllers.UserController;
+import com.sincsmart.uutong.controllers.VersionController;
 import com.sincsmart.uutong.models.AssetInfo;
 import com.sincsmart.uutong.models.AssetType;
 import com.sincsmart.uutong.models.ChildInfo;
@@ -19,8 +23,6 @@ import com.sincsmart.uutong.models.NewsInfo;
 import com.sincsmart.uutong.models.SchoolInfo;
 import com.sincsmart.uutong.models.UserInfo;
 import com.sincsmart.uutong.models.VersionInfo;
-import com.sincsmart.uutong.news.NewsController;
-import com.sincsmart.uutong.user.UserController;
 
 /**
  * API引导式配置
@@ -44,7 +46,8 @@ public class GlobalConfig extends JFinalConfig {
 		me.add("/", UserController.class, "user"); // 第三个参数为该Controller的视图存放路径
 		me.add("/user", UserController.class);
 		me.add("/news", NewsController.class);
-		
+		me.add("/version",VersionController.class);
+		me.add("/asset",AssetController.class);
 	}
 
 	@Override

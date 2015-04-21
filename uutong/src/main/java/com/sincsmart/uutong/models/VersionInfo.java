@@ -11,6 +11,6 @@ public class VersionInfo extends Model<VersionInfo> {
 	public static final String iOS = "iOS";
 	
 	public VersionInfo getLast(String type){
-		return findFirst("select * from versioninfo where type = ? order by cover",type);
+		return findFirst("select * from versioninfo where type = ? order by cover desc",type);
 	}
 }

@@ -1,4 +1,4 @@
-package com.sincsmart.uutong.version;
+package com.sincsmart.uutong.appmodels;
 
 import java.io.Serializable;
 
@@ -12,7 +12,7 @@ public class AppVersion implements Serializable{
 	private String name;
 	private String feature;
 	private String type;
-	private String beta;
+	private int beta;
 	private String url;
 	
 	
@@ -21,7 +21,7 @@ public class AppVersion implements Serializable{
 		setName(versionInfo.getStr("name"));
 		setFeature(versionInfo.getStr("feature"));
 		setType(versionInfo.getStr("type"));
-		setBeta(versionInfo.getStr("beta"));
+		setBeta(versionInfo.getInt("beta"));
 		setUrl(versionInfo.getStr("url"));
 	}
 	
@@ -50,11 +50,11 @@ public class AppVersion implements Serializable{
 		this.type = type;
 	}
 	
-	public String getBeta() {
+	public int getBeta() {
 		return beta;
 	}
 
-	public void setBeta(String beta) {
+	public void setBeta(int beta) {
 		this.beta = beta;
 	}
 

@@ -1,4 +1,4 @@
-package com.sincsmart.uutong.user;
+package com.sincsmart.uutong.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
+import com.sincsmart.uutong.appmodels.AppUser;
 import com.sincsmart.uutong.appmodels.SdkHttpResult;
 import com.sincsmart.uutong.models.ChildInfo;
 import com.sincsmart.uutong.models.UserInfo;

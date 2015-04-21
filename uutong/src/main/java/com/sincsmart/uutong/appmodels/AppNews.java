@@ -1,4 +1,4 @@
-package com.sincsmart.uutong.news;
+package com.sincsmart.uutong.appmodels;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -22,30 +22,34 @@ public class AppNews implements Serializable{
 	
 	private int optIn;
 	private String url;
-	private Calendar coverTime;
+	private Calendar cover;
+	private int ownershipType;
 	
 	public AppNews() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
-	
-
-	public AppNews(NewsInfo newsInfo,String schoolName, String className) {
+	public AppNews(NewsInfo newsInfo) {
 		setId(newsInfo.getStr("id"));
-		setSchoolId(schoolId);
-		setSchoolName(schoolName);
-		setClassId(classId);
-		setClassName(className);
 
 		setAuthorId(newsInfo.getStr("author"));
-//		appNews.setAuthorName(authorMap.get(authorId));
 		setTitle(newsInfo.getStr("title"));
 		setUrl(newsInfo.getStr("url"));
 		setOptIn(newsInfo.getInt("optIn"));
 		Calendar coverTime = Calendar.getInstance();
 		coverTime.setTime(newsInfo.getTimestamp("cover"));
-		setCoverTime(coverTime);
+		setCover(coverTime);
+		setOwnershipType(newsInfo.getInt("ownershipType"));
+	}
+	
+
+	public AppNews(NewsInfo newsInfo,String schoolId , String schoolName, String classId, String className) {
+		this(newsInfo);
+		
+		setSchoolId(schoolId);
+		setSchoolName(schoolName);
+		setClassId(classId);
+		setClassName(className);
 	}
 
 
@@ -130,13 +134,23 @@ public class AppNews implements Serializable{
 		this.url = url;
 	}
 
-	public Calendar getCoverTime() {
-		return coverTime;
+	public Calendar getCover() {
+		return cover;
 	}
 
-	public void setCoverTime(Calendar coverTime) {
-		this.coverTime = coverTime;
+	public void setCover(Calendar cover) {
+		this.cover = cover;
 	}
+
+	public int getOwnershipType() {
+		return ownershipType;
+	}
+
+	public void setOwnershipType(int ownershipType) {
+		this.ownershipType = ownershipType;
+	}
+
+	
 	
 	
 }

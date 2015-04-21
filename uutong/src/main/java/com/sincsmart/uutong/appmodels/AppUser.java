@@ -1,4 +1,4 @@
-package com.sincsmart.uutong.user;
+package com.sincsmart.uutong.appmodels;
 
 import java.io.Serializable;
 import java.util.Calendar;

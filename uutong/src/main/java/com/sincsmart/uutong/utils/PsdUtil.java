@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import com.sincsmart.uutong.user.UserController;
+import com.sincsmart.uutong.controllers.UserController;
 
 public class PsdUtil {
 
