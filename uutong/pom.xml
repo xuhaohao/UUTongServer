@@ -9,7 +9,7 @@
 	<url>http://maven.apache.org</url>
 	
 	<properties>
-		<compileEnv>1.6</compileEnv>
+		<compileEnv>1.7</compileEnv>
 		<jetty.version>8.1.16.v20140903</jetty.version>
 	</properties>
 	
@@ -31,6 +31,27 @@
 			<groupId>com.jfinal</groupId>
 			<artifactId>jfinal</artifactId>
 			<version>1.9</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.9</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>17.0</version>
+		</dependency>
+		<dependency>
+		  <groupId>org.json</groupId>
+		  <artifactId>json</artifactId>
+		  <version>20090211</version>
+		</dependency>
+		<dependency>
+		  <groupId>com.google.code.gson</groupId>
+		  <artifactId>gson</artifactId>
+		  <version>2.2.4</version>
 		</dependency>
 		<!-- Jetty JSP：根据 Dependency Hierarchy 视图拆分成了七个 dependency， - 方便项目以及便于 
 			导出 war的在jetty与tomcat间无缝迁移 - Dependencies: http://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp 

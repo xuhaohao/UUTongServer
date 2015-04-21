@@ -10,7 +10,16 @@ import com.jfinal.core.JFinal;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.tx.TxByRegex;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
-import com.sincsmart.uutong.models.UserModel;
+import com.sincsmart.uutong.models.AssetInfo;
+import com.sincsmart.uutong.models.AssetType;
+import com.sincsmart.uutong.models.ChildInfo;
+import com.sincsmart.uutong.models.ClassInfo;
+import com.sincsmart.uutong.models.NewsDetail;
+import com.sincsmart.uutong.models.NewsInfo;
+import com.sincsmart.uutong.models.SchoolInfo;
+import com.sincsmart.uutong.models.UserInfo;
+import com.sincsmart.uutong.models.VersionInfo;
+import com.sincsmart.uutong.news.NewsController;
 import com.sincsmart.uutong.user.UserController;
 
 /**
@@ -34,6 +43,7 @@ public class GlobalConfig extends JFinalConfig {
 		
 		me.add("/", UserController.class, "user"); // 第三个参数为该Controller的视图存放路径
 		me.add("/user", UserController.class);
+		me.add("/news", NewsController.class);
 		
 	}
 
@@ -42,12 +52,32 @@ public class GlobalConfig extends JFinalConfig {
 		// 配置C3p0数据库连接池插件
 		C3p0Plugin c3p0Plugin = new C3p0Plugin(getProperty("jdbcUrl"),
 				getProperty("user"), getProperty("password").trim());
+		
 		me.add(c3p0Plugin);
-
 		// 配置ActiveRecord插件
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(c3p0Plugin);
+		arp.setShowSql(true);//这句话就是ShowSql
 		me.add(arp);
-		arp.addMapping("userModel", UserModel.class);
+		
+		Class[] mapClassArray = new Class[]{ 
+				UserInfo.class,
+				ChildInfo.class,
+				ClassInfo.class,
+				SchoolInfo.class,
+				NewsInfo.class,
+				NewsDetail.class,
+				AssetInfo.class,
+				AssetType.class,
+				VersionInfo.class};
+		for (Class classess : mapClassArray) {
+			String className = classess.getSimpleName().toLowerCase();
+			arp.addMapping(className, classess);
+		}
+//		arp.addMapping("userinfo", UserInfo.class);
+//		arp.addMapping("childinfo", ChildInfo.class);
+//		arp.addMapping("classinfo", ClassInfo.class);
+//		arp.addMapping("schoolinfo", SchoolInfo.class);
+//		arp.addMapping("newsinfo",NewsInfo.class);
 	}
 
 	@Override
