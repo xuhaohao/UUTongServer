@@ -37,4 +37,6 @@ public class UserInfo extends Model<UserInfo>{
 		List<UserInfo> list = find(sb.toString());
 		return list;
 	}
+	
+	
 }

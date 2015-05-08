@@ -33,7 +33,10 @@ public class SdkHttpResult implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
-	
+	public void setFieldValues(int code,String result){
+		this.code = code;
+		this.result = result;
+	}
 
 //	@Override
 //	public String toString() {

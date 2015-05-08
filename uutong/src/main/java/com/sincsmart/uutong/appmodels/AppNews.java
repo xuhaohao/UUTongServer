@@ -1,29 +1,33 @@
 package com.sincsmart.uutong.appmodels;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Calendar;
 
+import com.jfinal.plugin.activerecord.Record;
+import com.sincsmart.uutong.common.R;
 import com.sincsmart.uutong.models.NewsInfo;
-import com.sincsmart.uutong.models.UserInfo;
 
 public class AppNews implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	private String id;
-	private String schoolId;
-	private String schoolName;
-	private String classId;
-	private String className;
+
 	private String authorId;
 	private String authorName;
  
+	private String groupId;
+	
 	private String title;
 	
 	private int optIn;
 	private String url;
-	private Calendar cover;
+	private String cover;
 	private int ownershipType;
+	
+	private String image;
+	private String content;
 	
 	public AppNews() {
 		
@@ -38,20 +42,28 @@ public class AppNews implements Serializable{
 		setOptIn(newsInfo.getInt("optIn"));
 		Calendar coverTime = Calendar.getInstance();
 		coverTime.setTime(newsInfo.getTimestamp("cover"));
-		setCover(coverTime);
+		
+		Timestamp timeStamp = newsInfo.getTimestamp("cover");
+		if (timeStamp != null) {
+			setCover(timeStamp.toString().substring(0,19));
+		}
+		setImage(newsInfo.getStr("image"));
 		setOwnershipType(newsInfo.getInt("ownershipType"));
+		
+		setContent(newsInfo.getStr("content"));
 	}
 	
-
-	public AppNews(NewsInfo newsInfo,String schoolId , String schoolName, String classId, String className) {
-		this(newsInfo);
-		
-		setSchoolId(schoolId);
-		setSchoolName(schoolName);
-		setClassId(classId);
-		setClassName(className);
+	public AppNews(Record record){
+		this.id = record.getStr("id");
+		this.authorId = record.getStr("author");
+		this.authorName = record.getStr("name");
+		this.image = record.getStr("image");
+		this.title = record.getStr("title");
+		this.content = record.getStr("content");
+		this.groupId = record.getStr("ownership");
+		this.cover = R.df.format(record.getTimestamp("cover"));
 	}
-
+	
 
 
 	public String getId() {
@@ -60,38 +72,6 @@ public class AppNews implements Serializable{
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public String getSchoolId() {
-		return schoolId;
-	}
-
-	public void setSchoolId(String schoolId) {
-		this.schoolId = schoolId;
-	}
-
-	public String getSchoolName() {
-		return schoolName;
-	}
-
-	public void setSchoolName(String schoolName) {
-		this.schoolName = schoolName;
-	}
-
-	public String getClassId() {
-		return classId;
-	}
-
-	public void setClassId(String classId) {
-		this.classId = classId;
-	}
-
-	public String getClassName() {
-		return className;
-	}
-
-	public void setClassName(String className) {
-		this.className = className;
 	}
 
 	public String getAuthorId() {
@@ -134,11 +114,11 @@ public class AppNews implements Serializable{
 		this.url = url;
 	}
 
-	public Calendar getCover() {
+	public String getCover() {
 		return cover;
 	}
 
-	public void setCover(Calendar cover) {
+	public void setCover(String cover) {
 		this.cover = cover;
 	}
 
@@ -148,6 +128,30 @@ public class AppNews implements Serializable{
 
 	public void setOwnershipType(int ownershipType) {
 		this.ownershipType = ownershipType;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
 	}
 
 	

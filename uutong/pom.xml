@@ -9,7 +9,7 @@
 	<url>http://maven.apache.org</url>
 	
 	<properties>
-		<compileEnv>1.6</compileEnv>
+		<compileEnv>1.7</compileEnv>
 		<jetty.version>8.1.16.v20140903</jetty.version>
 	</properties>
 	
@@ -31,6 +31,11 @@
 			<groupId>com.jfinal</groupId>
 			<artifactId>jfinal</artifactId>
 			<version>1.9</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jfinal</groupId>
+			<artifactId>cos</artifactId>
+			<version>26Dec2008</version>
 		</dependency>
 		
 		<dependency>

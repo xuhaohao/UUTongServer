@@ -11,16 +11,17 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.tx.TxByRegex;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.sincsmart.uutong.controllers.AssetController;
+import com.sincsmart.uutong.controllers.GroupController;
 import com.sincsmart.uutong.controllers.NewsController;
 import com.sincsmart.uutong.controllers.UserController;
 import com.sincsmart.uutong.controllers.VersionController;
 import com.sincsmart.uutong.models.AssetInfo;
 import com.sincsmart.uutong.models.AssetType;
 import com.sincsmart.uutong.models.ChildInfo;
-import com.sincsmart.uutong.models.ClassInfo;
 import com.sincsmart.uutong.models.NewsDetail;
 import com.sincsmart.uutong.models.NewsInfo;
-import com.sincsmart.uutong.models.SchoolInfo;
+import com.sincsmart.uutong.models.OrganizationInfo;
+import com.sincsmart.uutong.models.OrganizationUser;
 import com.sincsmart.uutong.models.UserInfo;
 import com.sincsmart.uutong.models.VersionInfo;
 
@@ -48,6 +49,7 @@ public class GlobalConfig extends JFinalConfig {
 		me.add("/news", NewsController.class);
 		me.add("/version",VersionController.class);
 		me.add("/asset",AssetController.class);
+		me.add("/group",GroupController.class);
 	}
 
 	@Override
@@ -65,12 +67,12 @@ public class GlobalConfig extends JFinalConfig {
 		Class[] mapClassArray = new Class[]{ 
 				UserInfo.class,
 				ChildInfo.class,
-				ClassInfo.class,
-				SchoolInfo.class,
 				NewsInfo.class,
 				NewsDetail.class,
 				AssetInfo.class,
 				AssetType.class,
+				OrganizationInfo.class,
+				OrganizationUser.class,
 				VersionInfo.class};
 		for (Class classess : mapClassArray) {
 			String className = classess.getSimpleName().toLowerCase();
