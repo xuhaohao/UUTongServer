@@ -149,10 +149,10 @@ public class NewsController extends Controller{
 				return;
 			}
 			if (R.Identity_Teacher.equals(userInfo.getStr("identity"))) {
-				OrganizationUser organizationUser = OrganizationUser.me.findFirst("select * organizationuser where uid = ? and identity = 2", authorId);
+				OrganizationUser organizationUser = OrganizationUser.me.findFirst("select * from organizationuser where uid = ? and identity = 2", authorId);
 				if (organizationUser != null) {
 					newsInfo.set("ownershipType", R.OwnershipType_Class);
-					newsInfo.set("ownership", organizationUser.get("uid"));
+					newsInfo.set("ownership", organizationUser.get("oid"));
 				}else {
 					result.setFieldValues(404, "没有教师对应班级");
 				}

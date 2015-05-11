@@ -25,8 +25,6 @@ public class UserController extends Controller{
 
 	private static final Logger log = LogManager.getLogger(UserController.class);
 	
-	public static final String appKey = "3argexb6rn24e";
-	public static final String appSecret = "ZaF3DOggLT1J";
 	
 	public void index() {
 		renderText("你好");
@@ -41,15 +39,16 @@ public class UserController extends Controller{
 		
 		SdkHttpResult sdkHttpResult;
 		if (userInfo != null) {
-			sdkHttpResult = ApiHttpClient.getToken(appKey, appSecret, userInfo.getStr("id"), userInfo.getStr("name"), "http://aa.com/a.png", FormatType.json);
+			sdkHttpResult = ApiHttpClient.getToken(R.Rong_Key, R.Rong_Secret, userInfo.getStr("id"), userInfo.getStr("name"), "http://aa.com/a.png", FormatType.json);
     		JSONObject jsonObj = new JSONObject(sdkHttpResult.getResult());
     		if (jsonObj.getInt("code")==200) {
     			AppUser appUser = new AppUser(userInfo);
-    			appUser.setRongToken(jsonObj.getString("token"));
+    			String rongToken = jsonObj.getString("token");
+    			appUser.setRongToken(rongToken);
     			log.debug("gettoken=" + jsonObj.getString("token"));
     			sdkHttpResult.setResult(JSONHelper.toJSON(appUser));
-    			
-    			userInfo.set("logonDevice", device).save();
+    			userInfo.set("rongToken", rongToken);
+    			userInfo.set("logonDevice", device).update();
 			}
 		}else {
 			sdkHttpResult = new SdkHttpResult(-1, "用户名或密码不正确");

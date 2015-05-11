@@ -17,4 +17,7 @@ public class R {
 	public static final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	public static final String CorpId = "000000000000000000000000000000000000";
+	
+	public static final String Rong_Key = "3argexb6rn24e";
+	public static final String Rong_Secret = "ZaF3DOggLT1J";
 }
