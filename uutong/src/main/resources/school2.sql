@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50704
 File Encoding         : 65001
 
-Date: 2015-05-11 23:23:59
+Date: 2015-05-24 22:42:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -407,3 +407,4 @@ CREATE TABLE `versioninfo` (
 -- Records of versioninfo
 -- ----------------------------
 INSERT INTO `versioninfo` VALUES ('0', '发布版1.1.0510.Night', '1.添加群聊天\\\\n2.地图和voip功能暂不可用', '0', 'http://121.42.146.235:9080/UUTong365/app-debug.apk', 'Android', '2015-04-17 22:43:05');
+INSERT INTO `versioninfo` VALUES ('1', '发布版1.1.0511.Night', '1.发布公告的bug', '0', 'http://121.42.146.235:9080/UUTong365/app-debug.apk', 'Android', '2015-05-11 23:27:37');
