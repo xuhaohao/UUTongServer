@@ -10,7 +10,7 @@ import com.sincsmart.uutong.controllers.UserController;
 
 public class PsdUtil {
 
-	private static final Logger log = LogManager.getLogger(UserController.class);
+	private static final Logger log = LogManager.getLogger(PsdUtil.class);
 	
 	private static final String ALGORITHM_MD5 = "MD5";
 	 

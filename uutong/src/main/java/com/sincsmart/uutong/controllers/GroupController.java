@@ -41,6 +41,7 @@ public class GroupController extends Controller{
 	 * 创建一个群组
 	 */
 	public void save(){
+		SdkHttpResult sdkHttpResult = new SdkHttpResult(200, "创建完成");
 		String oid = "000000000000000000000000000000000101";
 		OrganizationInfo organizationInfo = OrganizationInfo.me.findById(oid);
 		String oName = organizationInfo.getStr("name");
@@ -51,7 +52,7 @@ public class GroupController extends Controller{
 				userIds.add(ou.getStr("uid"));
 			}
 			try {
-				SdkHttpResult sdkHttpResult = ApiHttpClient.createGroup(R.Rong_Key, R.Rong_Secret, userIds, oid, oName, FormatType.json);
+				sdkHttpResult = ApiHttpClient.createGroup(R.Rong_Key, R.Rong_Secret, userIds, oid, oName, FormatType.json);
 				if (sdkHttpResult != null) {
 					
 				}
@@ -61,6 +62,7 @@ public class GroupController extends Controller{
 			}
 		}
 		
+		renderJson(sdkHttpResult);
 		//创建Oganization
 		//创建OrganizationUser
 		//同步到融云Group
